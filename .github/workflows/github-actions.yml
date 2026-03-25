@@ -12,12 +12,6 @@ jobs:
         timeout-minutes: 120
         steps:
           - uses: actions/checkout@v2
-            with:
-              submodules: recursive
-              fetch-depth: 0
-          - name: Ensure full submodule history
-            run: |
-              git submodule foreach --recursive 'git fetch --unshallow || true'
           - name: Checkout submodules
             run: git submodule update --init --recursive
           - uses: webfactory/ssh-agent@v0.5.3
